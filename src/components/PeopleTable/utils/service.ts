@@ -1,64 +1,64 @@
 /* eslint-disable @typescript-eslint/indent */
-import { Person } from '../../../types';
-import { Columns } from '../types';
-import { getPeople } from '../../../api';
-import { ContextDataType } from '../../../context/types';
+import { Person } from "../../../types/Person";
+import { Columns } from "../types";
+import { getPeople } from "../../../api";
+import { ContextDataType } from "../../../context/types";
 
 export const columnsList: Array<keyof typeof Columns> = Object.values(
-  Columns,
-).filter(x => typeof x === 'string') as Array<keyof typeof Columns>;
+  Columns
+).filter((x) => typeof x === "string") as Array<keyof typeof Columns>;
 
 export const loadPeopleListFromDB = (contextData: ContextDataType) => {
   const { setContextData, context } = contextData;
 
   getPeople()
-    .then(list => {
+    .then((list) => {
       setContextData({
         ...context,
         fullList: list,
         listToShow: list,
         isLoading: false,
-        error: !!list.length ? null : 'empty',
+        error: !!list.length ? null : "empty",
       });
     })
     .catch(() => {
       setContextData({
         ...context,
         isLoading: false,
-        error: 'unloaded',
+        error: "unloaded",
       });
     });
 };
 
 export const getPersonByName = (name: string, list: Person[]) =>
-  list.find(per => name === per.name);
+  list.find((per) => name === per.name);
 
 export const getSortingClassName = (
   searchParams: URLSearchParams,
-  link: keyof typeof Columns,
+  link: keyof typeof Columns
 ) => {
-  const isSortParamExist = searchParams.has('sort');
-  const isOrderParamExist = searchParams.has('order');
-  const sortParam = searchParams.get('sort');
+  const isSortParamExist = searchParams.has("sort");
+  const isOrderParamExist = searchParams.has("order");
+  const sortParam = searchParams.get("sort");
   const columnName = link;
 
   if (isSortParamExist && columnName === sortParam) {
-    return isOrderParamExist ? 'fa-sort-down' : 'fa-sort-up';
+    return isOrderParamExist ? "fa-sort-down" : "fa-sort-up";
   }
 
-  return 'fa-sort';
+  return "fa-sort";
 };
 
 const getSortedPeopleList = (list: Person[], params: URLSearchParams) => {
   const listCopy = [...list];
-  const sortBy = params.get('sort');
-  const isDESC = params.has('order');
+  const sortBy = params.get("sort");
+  const isDESC = params.has("order");
 
   if (!sortBy) {
     return listCopy;
   }
 
-  return sortBy === 'born' || sortBy === 'died'
+  return sortBy === "born" || sortBy === "died"
     ? listCopy.sort((a, b) => {
         const aValue = a[sortBy as keyof Person] as number | undefined;
         const bValue = b[sortBy as keyof Person] as number | undefined;
@@ -68,20 +68,20 @@ const getSortedPeopleList = (list: Person[], params: URLSearchParams) => {
           : (aValue ?? 0) - (bValue ?? 0);
       })
     : listCopy.sort((a, b) => {
-        const aValue = a[sortBy as keyof Person] as 'name' | 'sex';
-        const bValue = b[sortBy as keyof Person] as 'name' | 'sex';
+        const aValue = a[sortBy as keyof Person] as "name" | "sex";
+        const bValue = b[sortBy as keyof Person] as "name" | "sex";
 
         return isDESC
-          ? (bValue ?? '').localeCompare(aValue ?? '')
-          : (aValue ?? '').localeCompare(bValue ?? '');
+          ? (bValue ?? "").localeCompare(aValue ?? "")
+          : (aValue ?? "").localeCompare(bValue ?? "");
       });
 };
 
 const getFiltredPeopleList = (list: Person[], params: URLSearchParams) => {
   let finalPeopleList = [...list];
-  const gender: string | null = params.get('sex');
-  const search: string | null = params.get('query');
-  const centuries: string[] = params.getAll('centuries');
+  const gender: string | null = params.get("sex");
+  const search: string | null = params.get("query");
+  const centuries: string[] = params.getAll("centuries");
 
   const isFilterExist = !!gender || !!search || !!centuries.length;
 
@@ -90,11 +90,11 @@ const getFiltredPeopleList = (list: Person[], params: URLSearchParams) => {
   }
 
   if (!!gender) {
-    finalPeopleList = [...finalPeopleList].filter(per => per.sex === gender);
+    finalPeopleList = [...finalPeopleList].filter((per) => per.sex === gender);
   }
 
   if (!!search) {
-    finalPeopleList = [...finalPeopleList].filter(per => {
+    finalPeopleList = [...finalPeopleList].filter((per) => {
       const motherName = per.motherName
         ? per.motherName.toLowerCase().includes(search)
         : false;
@@ -109,8 +109,8 @@ const getFiltredPeopleList = (list: Person[], params: URLSearchParams) => {
   }
 
   if (!!centuries.length) {
-    finalPeopleList = [...finalPeopleList].filter(per =>
-      centuries.some(cen => +cen - 1 <= per.born / 100),
+    finalPeopleList = [...finalPeopleList].filter((per) =>
+      centuries.some((cen) => +cen - 1 <= per.born / 100)
     );
   }
 
@@ -119,23 +119,23 @@ const getFiltredPeopleList = (list: Person[], params: URLSearchParams) => {
 
 export const updatePeopleList = (
   contextData: ContextDataType,
-  searchParams: URLSearchParams,
+  searchParams: URLSearchParams
 ): void => {
   const { context, setContextData } = contextData;
 
   const filtredPeopleList: Person[] = getFiltredPeopleList(
     context.fullList,
-    searchParams,
+    searchParams
   );
 
   const sortedPeopleList: Person[] = getSortedPeopleList(
     filtredPeopleList,
-    searchParams,
+    searchParams
   );
 
   setContextData({
     ...context,
-    error: !!sortedPeopleList.length ? null : 'wrongsearch',
+    error: !!sortedPeopleList.length ? null : "wrongsearch",
     listToShow: sortedPeopleList,
   });
 };
