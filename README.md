@@ -128,11 +128,3 @@ src/
 ## 🎯 Live Demo
 
 Check out the live version at: [https://artem-brui.github.io/People-App/](https://artem-brui.github.io/People-App/)
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
