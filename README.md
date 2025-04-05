@@ -1,54 +1,138 @@
-# React + TypeScript + Vite
+# People-App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application for managing and viewing people data with advanced filtering and sorting capabilities.
 
-Currently, two official plugins are available:
+## 📸 Screenshots
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<div align="center">
+  <img src="docs/images/main-view.png" alt="Main View" width="800"/>
+  <p><em>Main view with people list and filters</em></p>
+  
+  <img src="docs/images/search.png" alt="Search Functionality" width="800"/>
+  <p><em>Search functionality in action</em></p>
+  
+  <img src="docs/images/filters.png" alt="Filters" width="800"/>
+  <p><em>Filtering options: gender and century selection</em></p>
+  
+  <img src="docs/images/sorting.png" alt="Sorting" width="800"/>
+  <p><em>Sorting functionality with visual indicators</em></p>
+</div>
 
-## Expanding the ESLint configuration
+## 🌟 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Advanced Search & Filtering**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+  - Search by name, mother's name, or father's name
+  - Filter by gender
+  - Filter by century
+  - URL-based search parameters for easy sharing
+
+- **Sorting Capabilities**
+
+  - Sort by name, sex, birth year, or death year
+  - Ascending and descending order
+  - Visual indicators for current sort state
+
+- **Modern UI**
+  - Responsive design using Bulma CSS framework
+  - Clean and intuitive interface
+  - Loading states and error handling
+  - Font Awesome icons integration
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Artem-Brui/People-App.git
+cd People-App
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
+
+### Building for Production
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+### Deployment
+
+The application is automatically deployed to GitHub Pages. To deploy manually:
+
+```bash
+npm run deploy
+```
+
+## 🛠️ Tech Stack
+
+- React 19
+- TypeScript
+- Vite
+- React Router
+- Bulma CSS
+- Font Awesome
+- GitHub Pages
+
+## 📦 Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── context/        # React context for state management
+├── pages/          # Page components
+├── types/          # TypeScript type definitions
+├── utils/          # Utility functions
+└── api.ts          # API integration
+```
+
+## 🔍 Usage
+
+1. **Searching**
+
+   - Use the search bar to find people by name or parent's name
+   - Search is case-insensitive and works in real-time
+
+2. **Filtering**
+
+   - Select gender from the dropdown
+   - Choose centuries using checkboxes
+   - Multiple filters can be combined
+
+3. **Sorting**
+   - Click on column headers to sort
+   - Click again to change sort direction
+   - Current sort is indicated by an arrow icon
+
+## 🎯 Live Demo
+
+Check out the live version at: [https://artem-brui.github.io/People-App/](https://artem-brui.github.io/People-App/)
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
