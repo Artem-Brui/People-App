@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import { Person } from "../../../types/Person";
 import { Columns } from "../types";
 import { getPeople } from "../../../api";
@@ -18,7 +17,7 @@ export const loadPeopleListFromDB = (contextData: ContextDataType) => {
         fullList: list,
         listToShow: list,
         isLoading: false,
-        error: !!list.length ? null : "empty",
+        error: list.length ? null : "empty",
       });
     })
     .catch(() => {
@@ -89,11 +88,11 @@ const getFiltredPeopleList = (list: Person[], params: URLSearchParams) => {
     return finalPeopleList;
   }
 
-  if (!!gender) {
+  if (gender) {
     finalPeopleList = [...finalPeopleList].filter((per) => per.sex === gender);
   }
 
-  if (!!search) {
+  if (search) {
     finalPeopleList = [...finalPeopleList].filter((per) => {
       const motherName = per.motherName
         ? per.motherName.toLowerCase().includes(search)
@@ -108,9 +107,12 @@ const getFiltredPeopleList = (list: Person[], params: URLSearchParams) => {
     });
   }
 
-  if (!!centuries.length) {
-    finalPeopleList = [...finalPeopleList].filter((per) =>
-      centuries.some((cen) => +cen - 1 <= per.born / 100)
+  if (centuries.length) {
+    finalPeopleList = [...finalPeopleList].filter(per =>
+      centuries.some(
+        cen =>
+          per.born / 100 >= Number(cen) - 1 && per.born / 100 < Number(cen),
+      ),
     );
   }
 
@@ -135,7 +137,7 @@ export const updatePeopleList = (
 
   setContextData({
     ...context,
-    error: !!sortedPeopleList.length ? null : "wrongsearch",
+    error: sortedPeopleList.length ? null : "wrongsearch",
     listToShow: sortedPeopleList,
   });
 };

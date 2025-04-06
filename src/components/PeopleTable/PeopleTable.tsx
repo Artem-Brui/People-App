@@ -21,9 +21,11 @@ export const PeopleTable: React.FC = () => {
     context: { listToShow, error },
   } = contextData;
 
-  const isTableVisible = !listToShow.length || error;
+  if (!listToShow.length || error) {
+    return null
+  }
 
-  return !isTableVisible ? (
+  return (
     <table
       data-cy="peopleTable"
       className="table is-striped is-hoverable is-narrow is-fullwidth"
@@ -31,5 +33,5 @@ export const PeopleTable: React.FC = () => {
       <TableHeader />
       <PeopleList list={listToShow} />
     </table>
-  ) : null;
+  );
 };
