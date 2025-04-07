@@ -43,8 +43,9 @@ A modern React application for managing and viewing people data with advanced fi
 
 - React 19
 - TypeScript
-- Vite
 - React Router
+- Context API
+- UrlSearchParams
 - Bulma CSS
 - Font Awesome
 - GitHub Pages
