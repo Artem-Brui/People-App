@@ -5,16 +5,16 @@ A modern React application for managing and viewing people data with advanced fi
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="docs/images/main-view.png" alt="Main View" width="800"/>
+  <img src="docs/images/main-view.png" alt="Main View" width="300"/>
   <p><em>Main view with people list and filters</em></p>
   
-  <img src="docs/images/search.png" alt="Search Functionality" width="800"/>
+  <img src="docs/images/search.png" alt="Search Functionality" width="300"/>
   <p><em>Search functionality in action</em></p>
   
-  <img src="docs/images/filters.png" alt="Filters" width="800"/>
+  <img src="docs/images/filters.png" alt="Filters" width="300"/>
   <p><em>Filtering options: gender and century selection</em></p>
   
-  <img src="docs/images/sorting.png" alt="Sorting" width="800"/>
+  <img src="docs/images/sorting.png" alt="Sorting" width="300"/>
   <p><em>Sorting functionality with visual indicators</em></p>
 </div>
 
