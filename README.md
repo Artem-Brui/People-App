@@ -39,6 +39,50 @@ A modern React application for managing and viewing people data with advanced fi
   - Loading states and error handling
   - Font Awesome icons integration
 
+## 🛠️ Tech Stack
+
+- React 19
+- TypeScript
+- Vite
+- React Router
+- Bulma CSS
+- Font Awesome
+- GitHub Pages
+
+## 📦 Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── context/        # React context for state management
+├── pages/          # Page components
+├── types/          # TypeScript type definitions
+├── utils/          # Utility functions
+└── api.ts          # API integration
+```
+
+## 🔍 Usage
+
+1. **Searching**
+
+   - Use the search bar to find people by name or parent's name
+   - Search is case-insensitive and works in real-time
+
+2. **Filtering**
+
+   - Select gender from the dropdown
+   - Choose centuries using checkboxes
+   - Multiple filters can be combined
+
+3. **Sorting**
+   - Click on column headers to sort
+   - Click again to change sort direction
+   - Current sort is indicated by an arrow icon
+
+## 🎯 Live Demo
+
+Check out the live version at: [https://artem-brui.github.io/People-App/](https://artem-brui.github.io/People-App/)
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -84,47 +128,3 @@ The application is automatically deployed to GitHub Pages. To deploy manually:
 ```bash
 npm run deploy
 ```
-
-## 🛠️ Tech Stack
-
-- React 19
-- TypeScript
-- Vite
-- React Router
-- Bulma CSS
-- Font Awesome
-- GitHub Pages
-
-## 📦 Project Structure
-
-```
-src/
-├── components/     # Reusable UI components
-├── context/        # React context for state management
-├── pages/          # Page components
-├── types/          # TypeScript type definitions
-├── utils/          # Utility functions
-└── api.ts          # API integration
-```
-
-## 🔍 Usage
-
-1. **Searching**
-
-   - Use the search bar to find people by name or parent's name
-   - Search is case-insensitive and works in real-time
-
-2. **Filtering**
-
-   - Select gender from the dropdown
-   - Choose centuries using checkboxes
-   - Multiple filters can be combined
-
-3. **Sorting**
-   - Click on column headers to sort
-   - Click again to change sort direction
-   - Current sort is indicated by an arrow icon
-
-## 🎯 Live Demo
-
-Check out the live version at: [https://artem-brui.github.io/People-App/](https://artem-brui.github.io/People-App/)
